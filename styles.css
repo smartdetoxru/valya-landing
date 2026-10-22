@@ -17,3 +17,4 @@
 @media(max-width:1100px){.story-grid{grid-template-columns:.75fr .8fr 1.05fr;gap:45px}.story-photo{margin-top:48px}}
 @media(max-width:760px){.story-grid{display:grid;grid-template-columns:1fr}.story-photo{margin:0 0 30px;max-width:330px}.story-photo img{aspect-ratio:4/5}.story-intro{margin-bottom:10px}}
 .price-stack{display:grid;gap:22px;align-content:center}
+.detox-buy{display:flex;align-items:center;gap:26px;margin-top:30px;flex-wrap:wrap}.detox-price{font-family:var(--serif);font-size:36px;letter-spacing:-.03em}
