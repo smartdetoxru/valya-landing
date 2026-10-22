@@ -16,3 +16,4 @@
 .story-grid{grid-template-columns:.68fr .64fr 1.05fr}.story-photo{align-self:start;position:relative;margin-top:56px}.story-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 28%;filter:saturate(.8)}.story-photo span{display:block;background:var(--bg);margin:-1px 18px 0 0;padding:14px 16px;font-family:var(--serif);font-size:11px;font-style:italic;line-height:1.55;color:var(--accent)}
 @media(max-width:1100px){.story-grid{grid-template-columns:.75fr .8fr 1.05fr;gap:45px}.story-photo{margin-top:48px}}
 @media(max-width:760px){.story-grid{display:grid;grid-template-columns:1fr}.story-photo{margin:0 0 30px;max-width:330px}.story-photo img{aspect-ratio:4/5}.story-intro{margin-bottom:10px}}
+.price-stack{display:grid;gap:22px;align-content:center}
