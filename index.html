@@ -1,99 +1,575 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Индивидуальное сопровождение Валентины Ивушкиной: питание, подходы восточной медицины и ежедневная поддержка. Начните с бесплатной диагностики.">
-  <meta name="theme-color" content="#F8F7F2">
-  <title>Валентина Ивушкина — индивидуальное сопровождение</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700;800&family=DM+Sans:ital@1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="main.js" defer></script>
-</head>
-<body>
-  <a class="skip" href="#main">Перейти к содержимому</a>
-  <header class="site-header" id="top">
-    <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="На начало страницы"><img src="assets/logo.png" alt="Умный детокс" class="brand-logo"></a>
-      <nav class="nav" aria-label="Разделы страницы"><a href="#method">Метод</a><a href="#story">Обо мне</a><a href="#results">Истории</a><a href="#format">Формат и цена</a></nav>
-      <a class="header-action" href="#diagnostic">Бесплатная диагностика <span aria-hidden="true">↗</span></a>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Умный детокс — персональная программа восстановления пищеварения. Тибетская медицина, натуральные сборы и индивидуальное сопровождение.">
+<title>Умный детокс</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #F4F1EB;
+  --surface: #FFFFFF;
+  --fg: #1C1A15;
+  --fg2: #7D7668;
+  --accent: #3D5A2E;
+  --accent-soft: #E2EBD8;
+  --accent-hover: #2F4822;
+  --warm: #B8612A;
+  --warm-soft: #FAF0E6;
+  --border: #DDD8CC;
+  --dark-block: #1C1A15;
+  --dark-fg: #F4F1EB;
+  --dark-fg2: #A8A298;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E0D0B; --surface: #1C1A15; --fg: #EAE6DC; --fg2: #908A7C;
+    --accent: #7BA36E; --accent-soft: #1E2A1A; --accent-hover: #9AC48C;
+    --warm: #D0783E; --warm-soft: #2A1D12; --border: #2D2A24;
+    --dark-block: #0A0908; --dark-fg: #EAE6DC; --dark-fg2: #908A7C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E0D0B; --surface: #1C1A15; --fg: #EAE6DC; --fg2: #908A7C;
+  --accent: #7BA36E; --accent-soft: #1E2A1A; --accent-hover: #9AC48C;
+  --warm: #D0783E; --warm-soft: #2A1D12; --border: #2D2A24;
+  --dark-block: #0A0908; --dark-fg: #EAE6DC; --dark-fg2: #908A7C;
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:0px;z-index:100;background:transparent}
+img{max-width:100%;display:block}
+.in{max-width:1080px;margin:0 auto;padding-left:max(16px,0px);padding-right:max(16px,0px)}
+
+/* NAV */
+.nav{position:fixed;top:0px;left:0;right:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid color-mix(in srgb,var(--border) 40%,transparent)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;padding-block:14px}
+.nav-brand{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--fg);text-decoration:none;letter-spacing:-0.01em}
+.nav-r{display:flex;gap:24px;align-items:center}
+.nav-r a{font-size:13px;font-weight:500;color:var(--fg2);text-decoration:none;letter-spacing:0.5px;text-transform:uppercase}
+.nav-r a:hover{color:var(--fg)}
+.nb{background:var(--accent);color:#fff!important;padding:10px 22px;border-radius:8px;font-weight:600;text-transform:none;letter-spacing:0;transition:background 0.2s}
+.nb:hover{background:var(--accent-hover)}
+@media(max-width:768px){.nav-r a:not(.nb){display:none}}
+
+/* SHARED */
+.ey{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.h2{font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);font-weight:700;line-height:1.2;margin:0 0 14px;text-wrap:balance}
+.sub{font-size:16px;color:var(--fg2);line-height:1.6}
+.btn{display:inline-flex;align-items:center;padding:16px 36px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all 0.25s}
+.btn-f{background:var(--accent);color:#fff}.btn-f:hover{background:var(--accent-hover)}
+.btn-g{background:transparent;color:var(--dark-fg);border:1px solid color-mix(in srgb,var(--dark-fg) 20%,transparent)}
+.btn-g:hover{border-color:color-mix(in srgb,var(--dark-fg) 50%,transparent)}
+.btn-o{background:transparent;color:var(--fg);border:1.5px solid var(--border)}.btn-o:hover{border-color:var(--accent);color:var(--accent)}
+.btn-w{background:var(--warm);color:#fff}.btn-w:hover{background:#a35524}
+
+/* HERO — dark */
+.hero{background:var(--dark-block);color:var(--dark-fg);padding:calc(0px+100px) 0 80px;text-align:center}
+.hero-ey{font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-ey::before,.hero-ey::after{content:"";width:40px;height:1px;background:currentColor;opacity:0.4}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,60px);font-weight:400;font-style:italic;line-height:1.15;margin:0 auto 28px;max-width:720px;text-wrap:balance}
+.hero-sub{font-size:17px;line-height:1.65;color:var(--dark-fg2);max-width:520px;margin:0 auto 44px}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-photo{margin-top:48px;display:flex;justify-content:center}
+.hero-photo img{width:280px;height:280px;object-fit:cover;border-radius:50%;border:3px solid var(--accent)}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:40px;padding-top:40px;border-top:1px solid color-mix(in srgb,var(--dark-fg) 10%,transparent)}
+.hero-stat{text-align:center}
+.hero-stat strong{display:block;font-family:var(--font-display);font-size:36px;font-weight:700;line-height:1;margin-bottom:6px}
+.hero-stat span{font-size:12px;color:var(--dark-fg2);text-transform:uppercase;letter-spacing:1px}
+@media(max-width:600px){.hero-stats{gap:24px}.hero-stat strong{font-size:28px}}
+
+/* SECTION — light */
+.sec{padding-block:100px}
+.sec-h{text-align:center;max-width:640px;margin:0 auto 60px}
+
+/* SECTION — dark */
+.sec-d{background:var(--dark-block);color:var(--dark-fg);padding-block:100px}
+.sec-d .ey{color:var(--accent)}.sec-d .h2{color:var(--dark-fg)}.sec-d .sub{color:var(--dark-fg2)}
+
+/* SECTION — surface */
+.sec-s{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding-block:100px}
+
+/* GRID helpers */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+@media(max-width:800px){.g2,.g3{grid-template-columns:1fr}}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 24px;transition:box-shadow 0.3s}
+.card:hover{box-shadow:0 4px 24px color-mix(in srgb,var(--fg) 5%,transparent)}
+.card h3{font-family:var(--font-display);font-size:20px;font-weight:700;margin:0 0 8px}
+.card p{font-size:14px;color:var(--fg2);margin:0;line-height:1.55}
+
+/* DARK CARDS */
+.dcard{background:color-mix(in srgb,var(--dark-fg) 5%,transparent);border:1px solid color-mix(in srgb,var(--dark-fg) 8%,transparent);border-radius:16px;padding:28px 24px}
+.dcard h3{font-family:var(--font-display);font-size:20px;font-weight:700;margin:0 0 8px;color:var(--dark-fg)}
+.dcard p{font-size:14px;color:var(--dark-fg2);margin:0;line-height:1.55}
+
+/* ICON BOX */
+.ico{width:48px;height:48px;border-radius:14px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.ico-d{background:color-mix(in srgb,var(--accent) 15%,transparent)}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:28px}
+.step{display:flex;gap:20px;align-items:flex-start}
+.step-n{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.step-b h4{font-size:15px;font-weight:600;margin:0 0 4px}.step-b p{font-size:14px;color:var(--fg2);margin:0}
+.sec-d .step-b h4{color:var(--dark-fg)}.sec-d .step-b p{color:var(--dark-fg2)}
+
+/* PRICING */
+.pcard{border:1.5px solid var(--border);border-radius:20px;padding:40px 32px;background:var(--surface);position:relative}
+.pcard.main{border-color:var(--accent)}
+.pcard.main::before{content:"РЕКОМЕНДУЕМ";position:absolute;top:-12px;left:32px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:2px;padding:5px 14px;border-radius:6px}
+.pcard-t{font-family:var(--font-display);font-size:24px;font-weight:700;margin:0 0 8px}
+.pcard-d{font-size:14px;color:var(--fg2);margin:0 0 24px;line-height:1.5}
+.pcard-p{font-family:var(--font-display);font-size:44px;font-weight:700;line-height:1;margin:0 0 4px}
+.pcard-p small{font-size:18px;font-weight:400;color:var(--fg2)}
+.pcard-n{font-size:12px;color:var(--fg2);margin:0 0 28px}
+.pcard ul{list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:12px}
+.pcard li{font-size:14px;padding-left:24px;position:relative;line-height:1.45}
+.pcard li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.pcard-btn{display:block;width:100%;text-align:center;padding:14px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.25s;border:none;cursor:pointer}
+.pcard-btn.fill{background:var(--accent);color:#fff}.pcard-btn.fill:hover{background:var(--accent-hover)}
+.pcard-btn.outline{background:transparent;border:1.5px solid var(--border);color:var(--fg)}.pcard-btn.outline:hover{border-color:var(--accent);color:var(--accent)}
+.inst{text-align:center;font-size:12px;color:var(--fg2);margin-top:12px}
+
+/* TESTIMONIALS */
+.tcard{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:32px 24px}
+.tcard q{display:block;font-family:var(--font-display);font-size:17px;font-style:italic;line-height:1.55;margin:0 0 20px;quotes:none}
+.tcard .who{font-size:13px;font-weight:600}
+.tcard .what{font-size:13px;color:var(--fg2)}
+.tcard .disc{font-size:11px;color:var(--fg2);font-style:italic;margin-top:8px}
+
+/* AUTHOR */
+.author-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center}
+.author-img{border-radius:24px;width:100%;aspect-ratio:3/4;object-fit:cover}
+.author-creds{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.cred{display:flex;gap:12px;align-items:flex-start;font-size:14px}
+.cred::before{content:"✦";color:var(--accent);font-size:16px;flex-shrink:0}
+@media(max-width:800px){.author-grid{grid-template-columns:1fr;gap:32px}.author-img{max-height:400px}}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-family:var(--font-display);font-size:18px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q::after{content:"+";font-size:24px;color:var(--accent);flex-shrink:0;transition:transform 0.3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:15px;color:var(--fg2);line-height:1.65;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s;padding-top:0}
+.faq-item.open .faq-a{max-height:400px;padding-top:16px}
+
+/* GUARANTEE */
+.guarantee{background:var(--accent-soft);border:2px solid var(--accent);border-radius:24px;padding:48px 40px;text-align:center;max-width:700px;margin:0 auto}
+.guarantee h3{font-family:var(--font-display);font-size:26px;font-weight:700;margin:0 0 16px}
+.guarantee p{font-size:15px;color:var(--fg2);line-height:1.6;margin:0}
+
+/* INLINE CTA BAND */
+.cta-band{background:var(--warm-soft);border-top:1px solid color-mix(in srgb,var(--warm) 20%,transparent);border-bottom:1px solid color-mix(in srgb,var(--warm) 20%,transparent);padding-block:48px;text-align:center}
+.cta-band h3{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;margin:0 0 12px;text-wrap:balance}
+.cta-band p{font-size:15px;color:var(--fg2);margin:0 0 24px}
+
+/* FOOTER */
+.footer{padding-block:40px;border-top:1px solid var(--border)}
+.footer .in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--fg2)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:12px;color:var(--fg2);text-decoration:none}
+.footer-links a:hover{color:var(--fg)}
+</style>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="in">
+    <a href="#" class="nav-brand">Умный детокс</a>
+    <div class="nav-r">
+      <a href="#for-whom">Для кого</a>
+      <a href="#method">Метод</a>
+      <a href="#pricing">Программы</a>
+      <a href="#author">Обо мне</a>
+      <a href="#diagnostic" class="nb">Диагностика</a>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Восточная медицина · индивидуальное сопровождение · 1–2 месяца</p>
-          <h1 id="hero-title">Еда должна<br>давать силы.<br><em>Не отнимать их.</em></h1>
-          <p class="hero-lead">Восстановите комфорт после еды — даже если кажется, что вы уже всё перепробовали.</p>
-          <p class="hero-detail">Персональная схема питания и традиционных сборов, ежедневная связь со мной и корректировки по ходу работы. Начнём с разговора о вашей ситуации.</p>
-          <a class="button button-primary" href="#diagnostic">Записаться на бесплатную диагностику <span aria-hidden="true">↗</span></a>
-          <p class="button-note">30–40 минут · обсудим симптомы и возможные шаги · без обязательств</p>
-        </div>
-        <div class="hero-photo">
-          <img src="assets/valentina-hero.jpg" alt="Валентина Ивушкина" fetchpriority="high">
-          <div class="photo-caption"><span class="caption-symbol">✳</span><span>Начать можно<br>с одного разговора</span></div>
+<!-- ════════════════════════════════════════════ -->
+<!-- 1. HERO -->
+<!-- ════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="in">
+    <div class="hero-ey">Тибетская медицина · Интегративная диетология</div>
+    <h1>Еда должна давать силы. Не отнимать их.</h1>
+    <p class="hero-sub">Персональная программа восстановления пищеварения. Натуральные сборы, индивидуальное питание и сопровождение — от первого дня до результата.</p>
+    <div class="hero-cta">
+      <a href="#diagnostic" class="btn btn-f">Бесплатная диагностика →</a>
+      <a href="#method" class="btn btn-g">Как это работает</a>
+    </div>
+    <div class="hero-photo"><img src="assets/valentina-hero.jpg" alt="Валентина Ивушкина"></div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>20 000+</strong><span>Участников</span></div>
+      <div class="hero-stat"><strong>10+</strong><span>Лет практики</span></div>
+      <div class="hero-stat"><strong>Yoga Journal</strong><span>Партнёр</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 2. УЗНАЁТЕ СЕБЯ? — проблемы -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec" id="problems">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Узнаёте себя?</div>
+      <h2 class="h2">Когда пищеварение ослабло — страдает всё тело</h2>
+      <p class="sub">Это не «возраст» и не «просто ваш организм такой». Это сигналы, которые можно убрать.</p>
+    </div>
+    <div class="g4">
+      <div class="card"><div class="ico">🔥</div><h3>Тяжесть и изжога</h3><p>Еда стоит часами. Омепразол «на постоянку». А изжога всё равно возвращается, стоит нарушить диету.</p></div>
+      <div class="card"><div class="ico">💨</div><h3>Вздутие и газы</h3><p>К вечеру живот как барабан. Ремень давит. Вы привыкли — но это не норма.</p></div>
+      <div class="card"><div class="ico">😴</div><h3>Усталость и отёки</h3><p>Утром мешки под глазами. Днём — сонливость после еды. Энергии нет, а анализы «в норме».</p></div>
+      <div class="card"><div class="ico">⚖️</div><h3>Вес не уходит</h3><p>Диеты, спорт — а цифра стоит. Потому что дело не в калориях, а в усвоении.</p></div>
+      <div class="card"><div class="ico">💊</div><h3>Зависимость от таблеток</h3><p>Слабительные, ферменты, антациды — каждый месяц. Без них уже не можете. Тело отвыкло работать само.</p></div>
+      <div class="card"><div class="ico">📋</div><h3>Список «нельзя» растёт</h3><p>Каждый год вычёркиваете продукты. Молочное, хлеб, фрукты… Скоро останется только гречка.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 3. ПОЧЕМУ НЕ РАБОТАЛО РАНЬШЕ — dark -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec-d">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Почему ничего не помогает</div>
+      <h2 class="h2" style="color:var(--dark-fg)">Вы пробовали. Не сработало. Вот почему.</h2>
+      <p class="sub" style="color:var(--dark-fg2)">Проблема не в вашей силе воли — а в подходе</p>
+    </div>
+    <div class="g3">
+      <div class="dcard">
+        <h3>Таблетки и БАДы</h3>
+        <p>Убирают симптом, не причину. Пока вы пьёте — работают. Перестали — всё возвращается. Организм так и не научился работать сам.</p>
+      </div>
+      <div class="dcard">
+        <h3>Универсальные диеты</h3>
+        <p>Кето, интервальное голодание, «чистое питание» — написаны для абстрактного человека. А ваш тип конституции и состояние пищеварения уникальны.</p>
+      </div>
+      <div class="dcard">
+        <h3>Отдельные специалисты</h3>
+        <p>Гастроэнтеролог лечит желудок. Диетолог даёт таблицу калорий. Но никто не смотрит на пищеварение как на систему — целиком.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <p style="font-family:var(--font-display);font-size:20px;font-style:italic;color:var(--dark-fg);max-width:600px;margin:0 auto 24px;text-wrap:balance">В тибетской медицине говорят: «Все болезни входят через рот». Пищеварение — не один орган. Это система. И лечить нужно систему.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 4. ДЛЯ КОГО -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec" id="for-whom">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Для кого</div>
+      <h2 class="h2">Программа подходит вам, если…</h2>
+    </div>
+    <div class="g2">
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <h3>Годами мучает ЖКТ</h3>
+        <p>Изжога, запоры, вздутие, тяжесть — и врачи говорят «попейте ферменты» или «это возрастное». Вы хотите решить проблему, а не глушить симптомы.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <h3>Вес не уходит</h3>
+        <p>Вы пробовали диеты и спорт, но ничего не работает. Потому что дело не в калориях — а в том, как ваш организм усваивает пищу.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <h3>Устали от таблеток</h3>
+        <p>Слабительные, антациды, ферменты — каждый месяц. Вы хотите, чтобы тело работало само, без постоянной химической поддержки.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <h3>Хотите мягкий подход</h3>
+        <p>Вам близка идея натуральных средств. Вы не ищете «волшебную таблетку» — а готовы изменить то, как вы едите.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CTA-BAND #1 -->
+<!-- ════════════════════════════════════════════ -->
+<section class="cta-band">
+  <div class="in">
+    <h3>Не уверены, подходит ли вам?</h3>
+    <p>Запишитесь на бесплатную диагностику — разберём вашу ситуацию за 30 минут. Без обязательств.</p>
+    <a href="#diagnostic" class="btn btn-w">Записаться на диагностику →</a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 5. МЕТОД — dark -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec-d" id="method">
+  <div class="in">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div>
+        <div class="ey">Метод</div>
+        <h2 class="h2" style="color:var(--dark-fg)">Не диета. Система, проверенная тысячелетиями</h2>
+        <p class="sub" style="color:var(--dark-fg2);margin-bottom:40px">В тибетской медицине пищеварение — «корень здоровья». Когда оно работает правильно, тело само приходит в баланс: уходят отёки, нормализуется вес, возвращается энергия.</p>
+        <div class="steps">
+          <div class="step"><div class="step-n">1</div><div class="step-b"><h4>Бесплатная диагностика</h4><p>30–40 минут по видеосвязи. Разбираю ваш случай, определяю тип несварения и составляю план.</p></div></div>
+          <div class="step"><div class="step-n">2</div><div class="step-b"><h4>Индивидуальные сборы + питание</h4><p>Травяные сборы подбираются лично для вас. Питание — из обычных продуктов, по простым правилам сочетаний и температуры.</p></div></div>
+          <div class="step"><div class="step-n">3</div><div class="step-b"><h4>Ежедневное сопровождение</h4><p>Связь каждый день, корректировки по ходу. Я рядом на протяжении всего курса.</p></div></div>
+          <div class="step"><div class="step-n">4</div><div class="step-b"><h4>Результат с первых недель</h4><p>Большинство участников отмечают первые изменения уже со 2–3 недели программы.</p></div></div>
         </div>
       </div>
-      <div class="hero-bottom wrap"><span>Питание · внимание · сопровождение</span><a href="#recognition">Узнаёте себя? <span aria-hidden="true">↓</span></a></div>
-    </section>
+      <div style="background:color-mix(in srgb,var(--dark-fg) 5%,transparent);border-radius:20px;padding:32px 28px">
+        <img src="assets/breakfast.jpg" alt="Здоровое питание" style="width:100%;border-radius:16px;margin-bottom:24px;aspect-ratio:4/3;object-fit:cover">
+        <blockquote style="font-family:var(--font-display);font-size:20px;font-style:italic;line-height:1.5;color:var(--dark-fg);margin:0 0 16px;border:none;padding:0">«Я не верила, что это возможно без таблеток. А оказалось — нужно было просто по-другому есть»</blockquote>
+        <cite style="font-style:normal;font-size:13px;color:var(--dark-fg2)">— Наталья, 49 лет. История из практики, с её слов.</cite>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ════════════════════════════════════════════ -->
+<!-- 6. ЧТО ВХОДИТ В ПРОГРАММУ -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Что входит</div>
+      <h2 class="h2">Полный состав индивидуальной программы</h2>
+      <p class="sub">Всё, что нужно, чтобы наладить пищеварение — от диагностики до результата</p>
+    </div>
+    <div class="g3">
+      <div class="card"><div class="ico">🔍</div><h3>Диагностика</h3><p>Видеоконсультация 30–40 мин. Определяю ваш тип конституции, состояние пищеварительного огня, анализирую анализы и жалобы.</p></div>
+      <div class="card"><div class="ico">🌿</div><h3>Индивидуальные сборы</h3><p>Травяные сборы тибетской медицины, подобранные лично для вас. Натуральные, без химии. Доставка в любой город.</p></div>
+      <div class="card"><div class="ico">🍽</div><h3>Персональный план питания</h3><p>Не диета с калориями, а система: какие продукты, в каких сочетаниях, при какой температуре, в какое время.</p></div>
+      <div class="card"><div class="ico">📱</div><h3>Ежедневная связь</h3><p>Каждый день на связи в мессенджере. Вопросы, корректировки, поддержка — без ожидания следующей «консультации через неделю».</p></div>
+      <div class="card"><div class="ico">📊</div><h3>Контроль динамики</h3><p>Отслеживаем изменения: самочувствие, стул, вес, энергию. Корректирую программу по ходу — не по шаблону.</p></div>
+      <div class="card"><div class="ico">📚</div><h3>Таблица совместимости</h3><p>Какие продукты сочетаются, а какие конфликтуют. Распечатайте и повесьте на холодильник — будете пользоваться годами.</p></div>
+    </div>
+  </div>
+</section>
 
-    <nav class="module-index wrap" aria-label="Разделы гайда">
-      <span class="module-index-title">Как устроена эта страница</span>
-      <a href="#recognition"><span>01</span> Узнать себя</a>
-      <a href="#method"><span>02</span> Понять подход</a>
-      <a href="#process"><span>03</span> Увидеть процесс</a>
-      <a href="#results"><span>04</span> Прочитать истории</a>
-      <a href="#format"><span>05</span> Узнать условия</a>
-    </nav>
+<!-- ════════════════════════════════════════════ -->
+<!-- 7. РЕЗУЛЬТАТЫ — отзывы -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec-s" id="results">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Результаты</div>
+      <h2 class="h2">Истории из практики</h2>
+      <p class="sub">Без обещаний. Факты — так, как рассказали участницы</p>
+    </div>
+    <div class="g3">
+      <div class="tcard">
+        <q>На второй неделе — ежедневный стул без слабительных. Через год: минус 8 кг. Анализы в норме. Я не верила, что это возможно без таблеток.</q>
+        <div class="who">Наталья, 49 лет</div>
+        <div class="what">Запор годами → 2-я неделя: ежедневный стул</div>
+        <div class="disc">История из моей практики, с её слов</div>
+      </div>
+      <div class="tcard">
+        <q>Через месяц — ем что хочу. Без изжоги, без омепразола. А потом парикмахер спросил: откуда у вас такая густота волос?</q>
+        <div class="who">Елена, 60 лет</div>
+        <div class="what">Изжога + омепразол → месяц: ест без ограничений</div>
+        <div class="disc">История из моей практики, с её слов</div>
+      </div>
+      <div class="tcard">
+        <q>«Помогите, очень хочу жить» — написала я. Через месяц — без таблеток. Вернулась к людям, к работе, к себе.</q>
+        <div class="who">Марина, 59 лет</div>
+        <div class="what">Букет диагнозов → месяц: без таблеток, вернулась к жизни</div>
+        <div class="disc">История из моей практики, с её слов</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="#diagnostic" class="btn btn-f">Хочу так же — записаться →</a>
+    </div>
+  </div>
+</section>
 
-    <section id="recognition" class="section recognition" aria-labelledby="recognition-title">
-      <div class="wrap">
-        <div class="section-head"><p class="section-index">Модуль 01 / О чём вы можете говорить на диагностике</p><h2 id="recognition-title">Вам знакомо<br><em>это состояние?</em></h2></div>
-        <div class="recognition-grid">
-          <ul class="symptoms">
-            <li><span class="symptom-num">01</span><span>После еды тяжесть держится часами, будто пища «стоит колом»</span></li>
-            <li><span class="symptom-num">02</span><span>Беспокоят отрыжка, изжога или запах изо рта</span></li>
-            <li><span class="symptom-num">03</span><span>К вечеру живот вздувается, появляется ощущение распирания</span></li>
-            <li><span class="symptom-num">04</span><span>Стул нерегулярный: запор или послабление повторяются месяцами</span></li>
-            <li><span class="symptom-num">05</span><span>Появляются отёки, а вес не меняется, несмотря на усилия</span></li>
-            <li><span class="symptom-num">06</span><span>Утром нет ощущения отдыха, даже после сна</span></li>
-          </ul>
-          <aside class="recognition-aside"><span class="aside-star" aria-hidden="true">✳</span><p>«Анализы в порядке, но мне всё равно плохо».</p><div class="aside-rule"></div><span>Если вы узнали себя, вам не нужно разбираться во всём в одиночку. Сначала посмотрим на картину целиком — без догадок и обвинений.</span></aside>
+<!-- ════════════════════════════════════════════ -->
+<!-- 8. ОБО МНЕ — автор -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec" id="author">
+  <div class="in">
+    <div class="author-grid">
+      <div>
+        <img class="author-img" src="assets/valentina-hero.jpg" alt="Валентина Ивушкина">
+      </div>
+      <div>
+        <div class="ey">Обо мне</div>
+        <h2 class="h2">Валентина Ивушкина</h2>
+        <p class="sub" style="margin-bottom:24px">Я не обещаю чудес. Я делаю то, что тибетская медицина делает тысячи лет — помогаю телу работать так, как задумано природой. Через питание, травы и внимание к вашему конкретному организму.</p>
+        <div class="author-creds">
+          <div class="cred">10+ лет практики в области восточной медицины и диетологии</div>
+          <div class="cred">Образование: тибетская медицина, интегративная диетология</div>
+          <div class="cred">20 000+ участников программы «Умный детокс»</div>
+          <div class="cred">Совместный проект с Yoga Journal</div>
+          <div class="cred">Работаю онлайн — участники из десятков городов России и из-за рубежа</div>
+          <div class="cred">Не заменяю врача. Работаю вместе с вашим лечащим врачом при хронических заболеваниях</div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="section shift" aria-labelledby="shift-title">
-      <div class="wrap shift-grid"><div><p class="section-index">Почему прежние попытки не дали устойчивого эффекта</p><h2 id="shift-title">Не всегда дело в том,<br>что вы <em>«недостаточно старались».</em></h2></div><div class="shift-body"><p>Если один подход не помог, это не делает ваш опыт «неправильным». Причины похожих симптомов бывают разными — от режима питания до состояний, которые требуют врачебной диагностики.</p><p>Во время первой встречи мы разберём, что уже пробовали, как менялось самочувствие и какие обследования есть. Я объясню, где может помочь работа с питанием, а где нужно сначала обратиться к врачу.</p></div></div>
-      <div class="wrap attempts"><article><span class="attempt-icon">✳</span><h3>Лекарства</h3><p>Могут быть необходимы и назначаются врачом. Если после курса симптомы вернулись, это повод обсудить дальнейший план с лечащим врачом, а не отменять лечение самостоятельно.</p></article><article><span class="attempt-icon">○</span><h3>БАДы и витамины</h3><p>Могут не решить вашу задачу, если неясно, для чего они нужны. Добавки стоит подбирать по показаниям, а не вместо выяснения причины жалоб.</p></article><article><span class="attempt-icon">✦</span><h3>Универсальные диеты</h3><p>То, что подходит одному человеку, другому может усиливать дискомфорт. Рацион имеет смысл адаптировать к самочувствию и подтверждённым ограничениям.</p></article></div>
-    </section>
+<!-- ════════════════════════════════════════════ -->
+<!-- 9. ЧТО БУДЕТ, ЕСЛИ НИЧЕГО НЕ МЕНЯТЬ — dark -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec-d">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Важно понимать</div>
+      <h2 class="h2" style="color:var(--dark-fg)">Что будет, если ничего не менять?</h2>
+    </div>
+    <div class="g2" style="max-width:800px;margin:0 auto">
+      <div class="dcard" style="border-left:3px solid var(--warm)">
+        <h3 style="color:var(--warm)">Через год</h3>
+        <p>Те же симптомы. Ещё больше ограничений в питании. Ещё одна упаковка ферментов. Привычный дискомфорт, к которому «привыкли».</p>
+      </div>
+      <div class="dcard" style="border-left:3px solid var(--accent)">
+        <h3 style="color:var(--accent)">Через год с программой</h3>
+        <p>Едите спокойно — без списка «нельзя». Тело работает само. Энергия вернулась. Вес нормализовался. И вы удивляетесь, что так долго терпели.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="method" class="section method" aria-labelledby="method-title">
-      <div class="wrap method-grid"><div class="method-image"><img src="https://images.pexels.com/photos/31871185/pexels-photo-31871185.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Домашняя еда и беседа за столом" loading="lazy"><span class="image-corner">Не универсальная диета.<br>Ваш собственный ритм.</span></div><div class="method-copy"><p class="section-index">Модуль 02 / Подход</p><h2 id="method-title">Пищеварительное<br><em>тепло — образ,</em><br>с которого удобно начать.</h2><p>Представьте плиту: если под кастрюлей слабый огонь, даже хорошим продуктам нужно больше времени, чтобы приготовиться. В восточной медицине эту метафору используют, чтобы говорить о питании и ощущениях после еды.</p><p>Я изучаю ваш режим, реакцию на продукты, привычки и историю симптомов. Затем подбираю питание и, если это уместно, традиционные сборы с учётом противопоказаний и принимаемых препаратов.</p><div class="method-callout">«Пищеварительный огонь» — метафора традиционного подхода, не медицинский диагноз. Жалобы и результаты обследований оцениваются отдельно.</div><a class="text-link" href="#diagnostic">Обсудить свой случай <span aria-hidden="true">↗</span></a></div></div>
-    </section>
+<!-- ════════════════════════════════════════════ -->
+<!-- 10. ТАРИФЫ -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec" id="pricing">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Программы</div>
+      <h2 class="h2">Два формата — одна цель</h2>
+      <p class="sub">Оба начинаются с бесплатной диагностики. Вы ничем не рискуете.</p>
+    </div>
+    <div class="g2" style="max-width:880px;margin:0 auto">
+      <!-- BASIC -->
+      <div class="pcard">
+        <div class="pcard-t">Базовая программа</div>
+        <p class="pcard-d">Самостоятельное прохождение: система питания, рецепты и поддержка в чате</p>
+        <div class="pcard-p">2 500 <small>₽</small></div>
+        <p class="pcard-n">единоразово</p>
+        <ul>
+          <li>Система питания по типу конституции</li>
+          <li>Таблица совместимости продуктов</li>
+          <li>7 уроков · 50 рецептов · 45 рекомендаций</li>
+          <li>Чат поддержки с участниками</li>
+          <li>Рекомендации по режиму дня</li>
+        </ul>
+        <a href="#" class="pcard-btn outline">Подробнее</a>
+      </div>
+      <!-- INDIVIDUAL -->
+      <div class="pcard main">
+        <div class="pcard-t">Индивидуальная программа</div>
+        <p class="pcard-d">Полное сопровождение: диагностика, персональные сборы, питание и ежедневная связь</p>
+        <div class="pcard-p">70 000 <small>₽</small></div>
+        <p class="pcard-n">полный курс · 1–2 месяца</p>
+        <ul>
+          <li>Всё из базовой программы</li>
+          <li>Личная диагностика по видеосвязи</li>
+          <li>Индивидуальные травяные сборы с доставкой</li>
+          <li>Персональный план питания</li>
+          <li>Ежедневная связь и корректировки</li>
+          <li>Проверка и разбор ваших анализов</li>
+          <li>Ограниченное число мест в месяц</li>
+        </ul>
+        <a href="#diagnostic" class="pcard-btn fill">Записаться на диагностику</a>
+        <p class="inst">Рассрочка без переплат · Сборы оплачиваются отдельно (~5–7 тыс. ₽/мес.)</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="story" class="section story" aria-labelledby="story-title"><div class="wrap story-grid"><div class="story-intro"><p class="section-index">Моя история</p><h2 id="story-title">Я знаю это<br>состояние <em>изнутри.</em></h2><div class="story-sig">Валентина Ивушкина</div></div><div class="story-photo"><img src="assets/valentina-story.jpg" alt="Валентина Ивушкина"><span>Личный опыт стал началом профессионального пути.</span></div><div class="story-text"><p>Много лет назад я сама искала ответ на вопросы, которые теперь слышу от клиенток: почему после еды тяжело, почему обследования не дают ясности и с чего вообще начинать.</p><p>Я обращалась к врачам и пробовала разные подходы. Позже познакомилась с восточной медициной и заметила улучшение самочувствия. Этот опыт стал началом моего профессионального пути — не заменой медицине, а причиной глубже изучить питание и индивидуальную работу.</p><p>Сегодня я работаю с женщинами, которым важно не получить ещё один список запретов, а понять собственные реакции и выстроить посильную систему на каждый день.</p><div class="credentials"><span>Специалист по восточной медицине · нутрициолог</span><span>Высшая Школа Тибетской медицины · Институт функциональной и интегративной диетологии</span><span>Автор программы «Умный детокс» · более десяти лет практики</span></div></div></div></section>
+<!-- ════════════════════════════════════════════ -->
+<!-- 11. ГАРАНТИЯ -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec" style="padding-top:0">
+  <div class="in">
+    <div class="guarantee">
+      <h3>🛡 Гарантия возврата — 7 дней</h3>
+      <p>Если в течение 7 дней после начала индивидуальной программы вы поймёте, что формат вам не подходит — верну оплату полностью. Без вопросов и условий. Я уверена в том, что делаю.</p>
+    </div>
+  </div>
+</section>
 
-    <section id="process" class="section process" aria-labelledby="process-title"><div class="wrap"><div class="section-head"><p class="section-index">Модуль 03 / Формат работы</p><h2 id="process-title">Вы не остаётесь<br><em>с планом наедине.</em></h2><p class="section-sub">Личная работа — это не файл с рекомендациями. Я остаюсь на связи, наблюдаю динамику и корректирую схему вместе с вами.</p></div><div class="steps"><article class="step"><span class="step-no">01</span><h3>Знакомство</h3><p>Бесплатная встреча на 30–40 минут: симптомы, история, обследования и честный разговор о том, могу ли я быть вам полезна.</p></article><article class="step"><span class="step-no">02</span><h3>Что проверить</h3><p>Смотрим имеющиеся анализы. Дополнительные обследования — только по показаниям и через вашего врача.</p></article><article class="step"><span class="step-no">03</span><h3>Личный план</h3><p>Подбираю рекомендации по питанию. Если уместно, обсуждаем традиционные сборы и их совместимость с вашим лечением.</p></article><article class="step"><span class="step-no">04</span><h3>Каждый день на связи</h3><p>Вы рассказываете, что ели и как себя чувствовали. Мы вносим изменения по фактической реакции, а не следуем жёсткому шаблону.</p></article><article class="step"><span class="step-no">05</span><h3>Видим динамику</h3><p>Фиксируем выраженность симптомов по шкале и сравниваем изменения. Сроки и результат индивидуальны.</p></article></div></div></section>
+<!-- ════════════════════════════════════════════ -->
+<!-- 12. FAQ -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec-s" id="faq">
+  <div class="in">
+    <div class="sec-h">
+      <div class="ey">Вопросы</div>
+      <h2 class="h2">Частые вопросы</h2>
+    </div>
+    <div style="max-width:720px;margin:0 auto">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Нужно ли сдавать анализы перед программой?</div>
+        <div class="faq-a">Если у вас есть свежие анализы — пришлите, я их разберу. Если нет — не обязательно сдавать заранее. На диагностике определим, нужны ли дополнительные обследования.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">А если я принимаю лекарства?</div>
+        <div class="faq-a">Я не отменяю назначения врача и не ставлю диагнозы. Программа — это система питания и травяные сборы, которые помогают пищеварению. Если у вас хронические заболевания — работаем вместе с вашим лечащим врачом.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Я в другом городе / стране. Это возможно?</div>
+        <div class="faq-a">Да. Всё полностью онлайн: диагностика по видеосвязи, программа в мессенджере, сборы — доставка в любой город. Среди участников — люди из десятков городов и из-за рубежа.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Сложно ли питаться по системе?</div>
+        <div class="faq-a">Продукты обычные — всё из ближайшего магазина. Никакого суперфуда за три тысячи. Дело не в экзотике, а в сочетаниях, температуре и времени. Можно питаться по системе даже в кафе и в путешествии.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Что за сборы и где их брать?</div>
+        <div class="faq-a">Это травяные сборы тибетской медицины — натуральные, без химии. Состав подбирается индивидуально. Заказывать по аптекам не нужно — всё приходит в готовом виде с доставкой. Стоимость сборов ~5–7 тыс. ₽ в месяц (оплачиваются отдельно).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Есть ли рассрочка?</div>
+        <div class="faq-a">Да, возможна рассрочка без переплат. Детали обсуждаем на бесплатной диагностике.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Когда ждать первых результатов?</div>
+        <div class="faq-a">Большинство участников отмечают первые изменения (стул, лёгкость, уменьшение вздутия) уже со 2–3 недели. Полный курс — 1–2 месяца, в зависимости от ситуации.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="results" class="section results" aria-labelledby="results-title"><div class="wrap"><div class="results-head"><div><p class="section-index">Модуль 04 / Из практики</p><h2 id="results-title">Не обещания.<br><em>Живые истории.</em></h2></div><p>Рассказы клиенток о собственном опыте. Сроки и изменения у каждого человека разные; истории не гарантируют аналогичный результат.</p></div><div class="case-list">
-      <article class="case"><div class="case-person"><span class="case-letter">Н</span><h3>Наталья</h3><span>49 лет</span></div><div class="case-before"><span class="case-label">С чем пришла</span><p>Годы нерегулярного стула, вздутие и сухость во рту. По её словам, пробовала разные средства, включая слабительные.</p></div><div class="case-after"><span class="case-label">Что рассказала позже</span><p>На второй неделе сообщила о ежедневном комфортном стуле. Через год — об устойчивом улучшении и снижении веса на 8 кг; показанные ею печёночные показатели и холестерин были в пределах нормы.</p></div></article>
-      <article class="case"><div class="case-person"><span class="case-letter">Е</span><h3>Елена</h3><span>60 лет</span></div><div class="case-before"><span class="case-label">С чем пришла</span><p>Несколько лет изжоги и рефлюкса, вздутие. Принимала омепразол и беспокоилась о давлении.</p></div><div class="case-after"><span class="case-label">Что рассказала позже</span><p>Через месяц сообщила, что изжога перестала беспокоить, питание стало разнообразнее, стул нормализовался. По её словам, давление и показатели ферментов были в порядке.</p></div></article>
-      <article class="case"><div class="case-person"><span class="case-letter">М</span><h3>Марина</h3><span>59 лет</span></div><div class="case-before"><span class="case-label">С чем пришла</span><p>Три года жидкого стула. Рассказывала, что не выходила из дома без лекарства и была вынуждена оставить работу.</p></div><div class="case-after"><span class="case-label">Что рассказала позже</span><p>На второй неделе заметила изменения стула. Через месяц сообщила о нормализации, а позднее — о возвращении к тай-чи, друзьям и работе.</p></div></article>
-    </div><p class="case-footnote">Истории изложены со слов клиенток. Медикаменты нельзя отменять без согласования с лечащим врачом.</p></div></section>
+<!-- ════════════════════════════════════════════ -->
+<!-- 13. ФИНАЛЬНЫЙ CTA — dark -->
+<!-- ════════════════════════════════════════════ -->
+<section class="sec-d" id="diagnostic" style="text-align:center">
+  <div class="in">
+    <div class="ey" style="color:var(--accent)">Первый шаг</div>
+    <h2 class="h2" style="color:var(--dark-fg);max-width:640px;margin:0 auto 16px">Начните с бесплатной диагностики</h2>
+    <p class="sub" style="color:var(--dark-fg2);max-width:520px;margin:0 auto 20px">Разберём вашу ситуацию, определю тип несварения и скажу честно — смогу ли помочь. Без обязательств.</p>
+    <div style="display:flex;flex-direction:column;gap:8px;align-items:center;margin-bottom:24px">
+      <span style="color:var(--dark-fg2);font-size:14px">✓ 30–40 минут по видеосвязи</span>
+      <span style="color:var(--dark-fg2);font-size:14px">✓ Онлайн из любого города</span>
+      <span style="color:var(--dark-fg2);font-size:14px">✓ Полностью бесплатно</span>
+    </div>
+    <a href="#" class="btn btn-f" style="font-size:17px;padding:18px 44px">Записаться бесплатно →</a>
+    <p style="font-size:13px;color:var(--dark-fg2);margin-top:16px">Число мест ограничено — я работаю с каждым участником лично</p>
+  </div>
+</section>
 
-    <section id="format" class="section offer" aria-labelledby="offer-title"><div class="wrap offer-layout"><div class="offer-copy"><p class="section-index section-index-light">Модуль 05 / Личная работа</p><h2 id="offer-title">Рядом на каждом<br><em>шаге изменений.</em></h2><p>Индивидуальное сопровождение с ежедневной связью, планом питания и корректировками по ходу работы. Обычный срок — один-два месяца; конкретная продолжительность зависит от вашей ситуации.</p><ul><li>Личная диагностическая встреча</li><li>Индивидуальные рекомендации по питанию</li><li>Подбор сборов по необходимости с учётом противопоказаний</li><li>Ежедневная обратная связь и отслеживание самочувствия</li></ul></div><div class="price-panel"><span class="price-label">Индивидуальное сопровождение</span><div class="price">70 000 <span>₽ / месяц</span></div><p>Традиционные сборы приобретаются отдельно, ориентир — 5–7 тыс. ₽ в месяц. Условия рассрочки обсуждаем до оформления.</p><div class="price-line"></div><p class="guarantee"><strong>Первые семь дней</strong><br>Если поймёте, что формат вам не подходит, я верну оплату полностью.</p><a class="button button-light" href="#diagnostic">Записаться на бесплатную диагностику <span aria-hidden="true">↗</span></a><span class="price-micro">Я веду клиенток лично, поэтому число мест ограничено.</span></div></div></section>
-
-    <section class="section detox" aria-labelledby="detox-title"><div class="wrap detox-grid"><div class="detox-visual"><div class="detox-art"><span class="detox-art-top">Система питания</span><span class="detox-art-title">Умный<br><i>детокс</i></span><span class="detox-art-bottom">Начните в своём темпе</span></div><img src="https://images.pexels.com/photos/31871185/pexels-photo-31871185.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Завтрак дома" loading="lazy"></div><div class="detox-copy"><p class="section-index">Модуль 06 / Другой способ познакомиться с подходом</p><h2 id="detox-title">Пока не готовы<br>к личной работе?</h2><p>«Умный детокс» — самостоятельная программа питания по принципам восточной медицины. В материалах: уроки, рецепты по системе «пяти элементов» и списки продуктов.</p><p>Она не заменяет личное сопровождение: здесь вы разбираетесь с основами самостоятельно, без индивидуальной схемы и ежедневных корректировок.</p><div class="detox-stats"><span><strong>7</strong> уроков</span><span><strong>50</strong> рецептов</span><span><strong>45</strong> рекомендаций</span></div><div class="detox-note">Если симптомы беспокоят давно или вы принимаете лекарства, лучше начать с диагностики. Обсудим, подойдёт ли вам самостоятельный формат.</div><div class="detox-buy"><span class="detox-price">2 500 ₽</span><a class="button" href="#diagnostic">Начать с питания <span aria-hidden="true">↗</span></a></div><a class="text-link" href="#diagnostic">Обсудить подходящий формат <span aria-hidden="true">↗</span></a></div></div></section>
-
-    <section class="section faq" aria-labelledby="faq-title"><div class="wrap faq-grid"><div><p class="section-index">Модуль 07 / Перед началом</p><h2 id="faq-title">Вопросы,<br><em>которые важно задать.</em></h2><p class="faq-intro">Если вашего вопроса здесь нет, обсудим его лично на бесплатной встрече.</p></div><div class="faq-list"><details><summary>Нужны ли анализы до первой встречи?</summary><p>Нет. На первой встрече разберём то, что у вас уже есть. Если понадобятся дополнительные обследования, обсудим их с вашим врачом.</p></details><details><summary>Совместима ли программа с моими лекарствами?</summary><p>Важно назвать все принимаемые препараты и заболевания. Традиционные сборы могут иметь противопоказания и взаимодействия; любые изменения назначенного лечения согласуются с лечащим врачом.</p></details><details><summary>Получится ли соблюдать рекомендации на работе?</summary><p>Мы учитываем ваш реальный график. Рацион можно собирать из доступных продуктов и заранее готовить блюда с собой.</p></details><details><summary>Что, если у меня сложный случай?</summary><p>Диагностика помогает понять, подойдёт ли моя работа или лучше обратиться к профильному врачу. Я честно скажу, если не смогу помочь.</p></details><details><summary>Можно ли оплатить в рассрочку?</summary><p>Возможность рассрочки обсуждаем на диагностике. Вы заранее узнаете действующие условия и итоговую стоимость.</p></details></div></div></section>
-
-    <section class="section final" id="diagnostic" aria-labelledby="final-title"><div class="wrap final-grid"><div><p class="section-index">Модуль 08 / Первый шаг</p><h2 id="final-title">Поговорим<br>о вашей <em>ситуации.</em></h2><p>На бесплатной встрече вы расскажете о симптомах, привычках и том, что уже пробовали. Я помогу наметить следующие шаги и честно скажу, подходит ли вам моя работа.</p><div class="final-time"><span class="time-circle">↗</span><span>30–40 минут<br>Онлайн · без обязательств</span></div></div><div class="contact-card"><h3>Записаться на бесплатную диагностику</h3><p>Оставьте контакты для связи. Отправка заявки появится здесь после подключения канала приёма заявок.</p><form id="request-form" novalidate><div class="form-grid"><label>Как к вам обращаться<input name="name" type="text" autocomplete="name" required placeholder="Ваше имя"></label><label>Контакт для связи<input name="contact" type="text" autocomplete="email" required placeholder="Телефон или Telegram"></label></div><label>Что вас беспокоит? <span class="optional">по желанию</span><textarea name="message" rows="3" placeholder="Можно коротко описать вашу ситуацию"></textarea></label><label class="consent"><input name="consent" type="checkbox" required><span>Согласна на обработку данных для ответа на заявку. <span class="privacy-note">Перед запуском сайта здесь будет ссылка на политику конфиденциальности.</span></span></label><button type="submit" class="button button-primary">Записаться на бесплатную диагностику <span aria-hidden="true">↗</span></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p></form></div></div></section>
-  </main>
-  <footer class="footer"><div class="wrap footer-top"><div><span class="footer-mark">В</span><span class="footer-name">Валентина Ивушкина</span></div><a href="#top">Наверх ↑</a></div><div class="wrap footer-bottom"><p>Валентина Ивушкина · специалист по восточной медицине, нутрициолог. Материалы носят информационный характер. Программа не является медицинской услугой и не заменяет диагностику и лечение у врача.</p><p>Контакты, политика конфиденциальности и юридические реквизиты будут добавлены перед публикацией.</p></div></footer>
-</body></html>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="in">
+    <span class="footer-copy">© 2024 Умный детокс · Валентина Ивушкина · Не является медицинской услугой</span>
+    <div class="footer-links">
+      <a href="#">Конфиденциальность</a>
+      <a href="#">Оферта</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+</html>
