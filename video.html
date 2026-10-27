@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Бесплатный видео-урок: почему пищеварение не восстанавливается и что с этим делать — Умный детокс">
+<title>Видео-урок — Умный детокс</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --bg: #F4F1EB;
+  --surface: #FFFFFF;
+  --fg: #1C1A15;
+  --fg2: #7D7668;
+  --accent: #3D5A2E;
+  --accent-soft: #E2EBD8;
+  --accent-hover: #2F4822;
+  --warm: #B8612A;
+  --warm-soft: #FAF0E6;
+  --border: #DDD8CC;
+  --dark-block: #1C1A15;
+  --dark-fg: #F4F1EB;
+  --dark-fg2: #A8A298;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E0D0B; --surface: #1C1A15; --fg: #EAE6DC; --fg2: #908A7C;
+    --accent: #7BA36E; --accent-soft: #1E2A1A; --accent-hover: #9AC48C;
+    --warm: #D0783E; --warm-soft: #2A1D12; --border: #2D2A24;
+    --dark-block: #0A0908; --dark-fg: #EAE6DC; --dark-fg2: #908A7C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E0D0B; --surface: #1C1A15; --fg: #EAE6DC; --fg2: #908A7C;
+  --accent: #7BA36E; --accent-soft: #1E2A1A; --accent-hover: #9AC48C;
+  --warm: #D0783E; --warm-soft: #2A1D12; --border: #2D2A24;
+  --dark-block: #0A0908; --dark-fg: #EAE6DC; --dark-fg2: #908A7C;
+  color-scheme: dark;
+}
+
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-hover)}
+
+.in{max-width:860px;margin:0 auto;padding-left:max(16px,0px);padding-right:max(16px,0px)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid color-mix(in srgb,var(--border) 40%,transparent)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;padding-block:14px;max-width:1080px}
+.nav-brand{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--fg);text-decoration:none;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px}
+.nav-brand img{height:32px}
+.nav-back{font-size:14px;font-weight:500;color:var(--fg2)}
+.nav-back:hover{color:var(--fg)}
+
+/* VIDEO */
+.video-hero{padding-top:100px;padding-bottom:48px}
+.video-hero h1{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.2;text-wrap:balance;margin-bottom:12px}
+.video-hero .subtitle{font-size:18px;color:var(--fg2);margin-bottom:32px;max-width:600px}
+.video-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:12px;overflow:hidden;background:var(--dark-block)}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ARTICLE */
+.article{padding-block:48px 80px}
+.article h2{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700;line-height:1.25;margin-bottom:24px;text-wrap:balance}
+.article h3{font-family:var(--font-display);font-size:20px;font-weight:700;margin-top:40px;margin-bottom:12px;color:var(--warm)}
+.article p{margin-bottom:16px;max-width:65ch}
+.article ul,.article ol{margin-bottom:16px;padding-left:24px}
+.article li{margin-bottom:8px}
+.article blockquote{border-left:3px solid var(--accent);padding:16px 20px;margin:24px 0;background:var(--accent-soft);border-radius:0 8px 8px 0;font-style:italic}
+.article .pause{display:block;text-align:center;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--fg2);padding:24px 0}
+.article .case{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:24px 0}
+.article .case .name{font-family:var(--font-display);font-weight:700;font-size:18px;margin-bottom:8px}
+
+/* CTA */
+.cta-band{background:var(--dark-block);color:var(--dark-fg);padding:48px 0;text-align:center;border-radius:16px;margin-bottom:64px}
+.cta-band h2{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);margin-bottom:12px}
+.cta-band p{color:var(--dark-fg2);margin-bottom:24px}
+.cta-band .btn{display:inline-block;background:var(--accent);color:#fff;padding:16px 40px;border-radius:10px;font-weight:600;font-size:17px;transition:background 0.2s}
+.cta-band .btn:hover{background:var(--accent-hover);color:#fff}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 0;text-align:center;font-size:13px;color:var(--fg2)}
+footer img{display:inline-block;height:24px;opacity:0.6;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="in">
+  <a href="index.html" class="nav-brand"><img src="assets/logo.png" alt="Умный детокс">Умный детокс</a>
+  <a href="index.html" class="nav-back">← На главную</a>
+</div>
+</nav>
+
+<!-- VIDEO -->
+<section class="video-hero">
+<div class="in">
+  <h1>Почему пищеварение не&nbsp;восстанавливается и&nbsp;что с&nbsp;этим делать</h1>
+  <p class="subtitle">Бесплатный видео-урок Валентины Ивушкиной · ~22 минуты</p>
+  <div class="video-wrap">
+    <iframe src="https://kinescope.io/embed/45f5ae97-4609-42d2-82a0-d400d276183c" allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; web-share" allowfullscreen></iframe>
+  </div>
+</div>
+</section>
+
+<!-- ARTICLE -->
+<article class="article">
+<div class="in">
+
+<h2>Текст к видео-уроку</h2>
+
+<p><em>Ниже — текст, на котором построен урок. Вы можете читать его параллельно с видео или отдельно.</em></p>
+
+<p class="pause">— Пауза: текст будет добавлен —</p>
+
+<p style="background:var(--warm-soft);padding:20px;border-radius:10px;text-align:center;color:var(--warm);font-weight:500">
+⏳ Текст суфлёра в процессе добавления. Пришлите текст в чат, и я размещу его здесь.
+</p>
+
+</div>
+</article>
+
+<!-- CTA -->
+<div class="in">
+<div class="cta-band">
+  <h2>Запишитесь на бесплатную диагностику</h2>
+  <p>20 минут, которые покажут причину ваших симптомов</p>
+  <a href="https://t.me/smartdetox_bot" class="btn">Записаться →</a>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="in">
+  <img src="assets/logo.png" alt="Умный детокс"><br>
+  © 2025 Умный детокс · Валентина Ивушкина
+</div>
+</footer>
+
+</body>
+</html>
