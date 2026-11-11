@@ -115,8 +115,8 @@ img{max-width:100%;display:block}
 .pcard li{font-size:14px;padding-left:24px;position:relative;line-height:1.45}
 .pcard li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
 .pcard-btn{display:block;width:100%;text-align:center;padding:14px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.25s;border:none;cursor:pointer}
-.pcard-btn.fill{background:var(--accent);color:#fff}.pcard-btn.fill:hover{background:var(--accent-hover)}
-.pcard-btn.outline{background:transparent;border:1.5px solid var(--border);color:var(--fg)}.pcard-btn.outline:hover{border-color:var(--accent);color:var(--accent)}
+.pcard-btn.fill{background:var(--accent);color:#F4F1EB;border-radius:4px}.pcard-btn.fill:hover{background:var(--accent-hover)}
+.pcard-btn.outline{background:transparent;border:1.5px solid var(--border);color:var(--fg);border-radius:4px}.pcard-btn.outline:hover{border-color:var(--accent);color:var(--accent)}
 .inst{text-align:center;font-size:12px;color:var(--fg2);margin-top:12px}
 
 /* AUTHOR */
@@ -357,7 +357,7 @@ img{max-width:100%;display:block}
           <li>7 уроков · 50 рецептов · 45 рекомендаций</li>
           <li>Чат поддержки с участниками</li>
         </ul>
-        <a href="#" class="pcard-btn outline">Подробнее</a>
+        <a href="#" class="pcard-btn fill">Присоединиться</a>
       </div>
       <div class="pcard main">
         <div class="pcard-t">Индивидуальная программа</div>
@@ -372,7 +372,8 @@ img{max-width:100%;display:block}
           <li>Ежедневная связь и корректировки</li>
           <li>Проверка и разбор ваших анализов</li>
         </ul>
-        <a href="#diagnostic" class="pcard-btn fill">Записаться на диагностику</a>
+        <a href="#diagnostic" class="pcard-btn outline" style="margin-bottom:10px">Записаться на диагностику</a>
+        <a href="#" class="pcard-btn fill">Присоединиться</a>
         <p class="inst">Рассрочка без переплат · Сборы оплачиваются отдельно (~5–7 тыс. ₽/мес.)</p>
       </div>
     </div>
