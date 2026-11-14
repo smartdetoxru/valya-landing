@@ -131,19 +131,20 @@ h2 em { font-weight: 400; color: var(--accent); }
 /* ── GRID ── */
 .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.g4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+.g4 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .g5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 @media (max-width: 900px) { .g2, .g3 { grid-template-columns: 1fr; } .g5 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 500px) { .g5 { grid-template-columns: 1fr; } }
 
 /* ── CARDS ── */
 .card {
-  background: var(--card); border: 1px solid var(--card-border); padding: 30px 26px;
-  transition: box-shadow .25s;
+  background: var(--card); border: 1px solid var(--card-border); padding: 32px 28px;
+  transition: box-shadow .25s, border-color .25s;
 }
-.card:hover { box-shadow: 0 6px 28px rgba(46,51,43,.07); }
-.card-icon { font-size: 26px; margin-bottom: 16px; }
-.card h3 { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 8px; line-height: 1.35; }
+.card:hover { box-shadow: 0 8px 32px rgba(46,51,43,.08); border-color: #C8C4B4; }
+.card-icon { margin-bottom: 20px; color: var(--accent); }
+.card-icon svg { display: block; }
+.card h3 { font-family: var(--serif); font-size: 17px; font-weight: 700; margin-bottom: 8px; line-height: 1.35; }
 .card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
 /* ── PROBLEMS ── */
@@ -162,18 +163,24 @@ h2 em { font-weight: 400; color: var(--accent); }
 .step-item p { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
 /* ── REVIEWS ── */
-.review { background: var(--bg); border: 1px solid var(--card-border); padding: 34px 28px; }
-.review q { display: block; font-family: var(--serif); font-size: 17px; font-style: italic; line-height: 1.6; margin-bottom: 22px; quotes: none; }
+.review { background: var(--bg); border: 1px solid var(--card-border); padding: 36px 32px 32px; position: relative; }
+.review::before {
+  content: "\201C"; font-family: var(--serif); font-size: 72px; line-height: 1;
+  color: var(--accent); opacity: .18; position: absolute; top: 16px; left: 26px;
+  pointer-events: none;
+}
+.review q { display: block; font-family: var(--serif); font-size: 16px; font-style: italic; line-height: 1.65; margin-bottom: 24px; quotes: none; padding-top: 10px; }
 .review-who { font-size: 13px; font-weight: 700; }
 .review-what { font-size: 12px; color: var(--muted-2); margin-top: 3px; }
 .review-disc { font-size: 11px; color: var(--faint); font-style: italic; margin-top: 10px; }
 
 /* ── WHY NOT WORKED ── */
-.attempts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(248,247,242,.08); }
-.attempt { background: var(--dark-bg); padding: 32px 28px 36px; border-top: 2px solid rgba(201,214,191,.2); }
-.attempt-icon { font-family: var(--serif); font-size: 26px; color: var(--accent-dark); margin-bottom: 20px; }
+.attempts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(248,247,242,.06); }
+.attempt { background: var(--dark-bg); padding: 40px 32px 44px; border-top: 1px solid rgba(201,214,191,.18); }
+.attempt-icon { margin-bottom: 24px; color: var(--accent-dark); }
+.attempt-icon svg { display: block; }
 .attempt h3 { font-family: var(--serif); font-size: 19px; color: var(--bg); margin-bottom: 12px; line-height: 1.4; }
-.attempt p { font-size: 14px; color: rgba(248,247,242,.55); line-height: 1.72; }
+.attempt p { font-size: 14px; color: rgba(248,247,242,.5); line-height: 1.78; }
 @media (max-width: 768px) { .attempts { grid-template-columns: 1fr; gap: 0; } }
 
 /* ── AUTHOR ── */
@@ -185,8 +192,9 @@ h2 em { font-weight: 400; color: var(--accent); }
 @media (max-width: 800px) { .author-grid { grid-template-columns: 1fr; gap: 36px; } .author-img { max-height: 420px; width: 100%; } }
 
 /* ── PRICING ── */
-.price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; max-width: 920px; margin-inline: auto; background: var(--card-border); }
-.pcard { background: var(--bg); padding: 36px 32px; position: relative; }
+.price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 920px; margin-inline: auto; border: 1px solid var(--card-border); }
+.pcard { background: var(--bg); padding: 40px 36px; position: relative; }
+.pcard + .pcard { border-left: 1px solid var(--card-border); }
 .pcard.featured { background: var(--card); }
 .pcard-badge {
   position: absolute; top: -13px; left: 38px;
@@ -276,6 +284,7 @@ textarea { resize: vertical; min-height: 90px; }
 .footer-bottom p { font-size: 11px; color: var(--muted-3); line-height: 1.65; max-width: 560px; }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 900px) { .g4 { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) {
   .hero { padding: 100px 0 56px; }
   .section, .section-alt, .section-dark, .section-block { padding-block: 52px; }
@@ -331,12 +340,12 @@ textarea { resize: vertical; min-height: 90px; }
       <p class="sec-lead">Их можно убрать. Без таблеток на постоянку.</p>
     </div>
     <div class="g4">
-      <div class="card"><div class="card-icon">🔥</div><h3>Тяжесть и изжога</h3><p>Омепразол «на постоянку» — а изжога всё равно возвращается.</p></div>
-      <div class="card"><div class="card-icon">💨</div><h3>Вздутие и газы</h3><p>К вечеру живот как барабан. Привыкли — но это не норма.</p></div>
-      <div class="card"><div class="card-icon">😴</div><h3>Усталость и отёки</h3><p>Мешки под глазами, сонливость после еды. Анализы «в норме».</p></div>
-      <div class="card"><div class="card-icon">⚖️</div><h3>Вес не уходит</h3><p>Диеты, спорт — цифра стоит. Дело не в калориях, а в усвоении.</p></div>
-      <div class="card"><div class="card-icon">💊</div><h3>Таблетки каждый месяц</h3><p>Слабительные, ферменты, антациды. Тело отвыкло работать само.</p></div>
-      <div class="card"><div class="card-icon">📋</div><h3>Список «нельзя» растёт</h3><p>Молочное, хлеб, фрукты… Скоро останется только гречка.</p></div>
+      <div class="card"><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M12 8v4l3 3"/></svg></div><h3>Тяжесть и изжога</h3><p>Омепразол «на постоянку» — а изжога всё равно возвращается.</p></div>
+      <div class="card"><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="10" ry="6"/><path d="M2 12c0 4 4.5 7 10 7s10-3 10-7"/></svg></div><h3>Вздутие и газы</h3><p>К вечеру живот как барабан. Привыкли — но это не норма.</p></div>
+      <div class="card"><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3>Усталость и отёки</h3><p>Мешки под глазами, сонливость после еды. Анализы «в норме».</p></div>
+      <div class="card"><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="6" y1="20" x2="6" y2="4"/><line x1="18" y1="20" x2="18" y2="16"/></svg></div><h3>Вес не уходит</h3><p>Диеты, спорт — цифра стоит. Дело не в калориях, а в усвоении.</p></div>
+      <div class="card"><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 9h6M9 13h4"/></svg></div><h3>Таблетки каждый месяц</h3><p>Слабительные, ферменты, антациды. Тело отвыкло работать само.</p></div>
+      <div class="card"><div class="card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>Список «нельзя» растёт</h3><p>Молочное, хлеб, фрукты… Скоро останется только гречка.</p></div>
     </div>
   </div>
 </section>
@@ -351,17 +360,17 @@ textarea { resize: vertical; min-height: 90px; }
     </div>
     <div class="attempts">
       <div class="attempt">
-        <div class="attempt-icon">💊</div>
+        <div class="attempt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 9h6M9 13h4"/></svg></div>
         <h3>Таблетки и БАДы</h3>
         <p>Убирают симптом, не причину. Пока пьёте — работают. Перестали — всё возвращается.</p>
       </div>
       <div class="attempt">
-        <div class="attempt-icon">🥗</div>
+        <div class="attempt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div>
         <h3>Универсальные диеты</h3>
         <p>Написаны для абстрактного человека. А ваш тип конституции и состояние пищеварения — уникальны.</p>
       </div>
       <div class="attempt">
-        <div class="attempt-icon">👨‍⚕️</div>
+        <div class="attempt-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Отдельные специалисты</h3>
         <p>Гастроэнтеролог лечит желудок. Диетолог — калории. Никто не смотрит на пищеварение как на систему.</p>
       </div>
@@ -405,11 +414,11 @@ textarea { resize: vertical; min-height: 90px; }
       <p class="sec-lead" style="margin-inline:auto">Всё, что нужно, чтобы наладить пищеварение — от диагностики до результата</p>
     </div>
     <div class="g5">
-      <div class="card"><div class="card-icon">🔍</div><h3>Диагностика</h3><p>Созвон 30–40 мин. Определяю тип конституции, состояние пищеварительного огня, анализирую анализы и жалобы.</p></div>
-      <div class="card"><div class="card-icon">🌿</div><h3>Индивидуальные сборы</h3><p>Травяные сборы восточной медицины, подобранные лично для вас. Натуральные, без химии. Доставка в любой город.</p></div>
-      <div class="card"><div class="card-icon">🍽</div><h3>Персональный план питания</h3><p>Не диета с калориями, а система: какие продукты, в каких сочетаниях, при какой температуре, в какое время.</p></div>
-      <div class="card"><div class="card-icon">📱</div><h3>Ежедневная связь</h3><p>Каждый день на связи в мессенджере. Вопросы, корректировки, поддержка — без ожидания следующей консультации.</p></div>
-      <div class="card"><div class="card-icon">📊</div><h3>Контроль динамики</h3><p>Отслеживаем изменения: самочувствие, стул, вес, энергию. Корректирую программу по ходу — не по шаблону.</p></div>
+      <div class="card"><div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><h3>Диагностика</h3><p>Созвон 30–40 мин. Определяю тип конституции, состояние пищеварительного огня, анализирую анализы и жалобы.</p></div>
+      <div class="card"><div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div><h3>Индивидуальные сборы</h3><p>Травяные сборы восточной медицины, подобранные лично для вас. Натуральные, без химии. Доставка в любой город.</p></div>
+      <div class="card"><div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2h18v6H3zM3 10h18v6H3zM3 18h18v4H3z"/></svg></div><h3>Персональный план питания</h3><p>Не диета с калориями, а система: какие продукты, в каких сочетаниях, при какой температуре, в какое время.</p></div>
+      <div class="card"><div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Ежедневная связь</h3><p>Каждый день на связи в мессенджере. Вопросы, корректировки, поддержка — без ожидания следующей консультации.</p></div>
+      <div class="card"><div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Контроль динамики</h3><p>Отслеживаем изменения: самочувствие, стул, вес, энергию. Корректирую программу по ходу — не по шаблону.</p></div>
     </div>
   </div>
 </section>
