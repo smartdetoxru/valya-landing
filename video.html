@@ -73,6 +73,13 @@ a:hover{color:var(--accent-hover)}
 .article ul,.article ol{margin-bottom:16px;padding-left:24px}
 .article li{margin-bottom:8px}
 .article blockquote{border-left:3px solid var(--accent);padding:16px 20px;margin:24px 0;background:var(--accent-soft);border-radius:0 8px 8px 0;font-style:italic}
+.transcript{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:40px}
+.transcript__btn{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;cursor:pointer;list-style:none;font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--accent);background:var(--accent-soft);transition:background .2s}
+.transcript__btn::-webkit-details-marker{display:none}
+.transcript__btn:hover{background:var(--border)}
+.transcript__icon{transition:transform .25s;flex-shrink:0}
+details[open] .transcript__icon{transform:rotate(180deg)}
+.transcript__body{padding:32px 24px 8px}
 .article .pause{display:block;text-align:center;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--fg2);padding:24px 0}
 .article .case{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:24px 0}
 .article .case .name{font-family:var(--font-display);font-weight:700;font-size:18px;margin-bottom:8px}
@@ -113,6 +120,10 @@ footer img{display:inline-block;height:24px;opacity:0.6;margin-bottom:8px}
 <!-- ARTICLE -->
 <article class="article">
 <div class="in">
+
+<details class="transcript">
+<summary class="transcript__btn"><span class="transcript__btn-text">Читать текст урока</span><svg class="transcript__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+<div class="transcript__body">
 
 <h2>Текст видеоурока</h2>
 
@@ -262,6 +273,9 @@ footer img{display:inline-block;height:24px;opacity:0.6;margin-bottom:8px}
 <blockquote>Нажмите кнопку «Записаться» — и мы договоримся о времени бесплатной диагностики. На ней я вас выслушаю, расскажу, что стоит за вашими симптомами, и мы наметим план. Даже если дальше вы решите справляться самостоятельно — у вас будет ясность, которой не дали годы обследований.</blockquote>
 
 <p>Я была рада быть вам полезной. И до встречи на диагностике.</p>
+
+</div><!-- /.transcript__body -->
+</details>
 
 </div>
 </article>
