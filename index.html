@@ -220,7 +220,11 @@ h2 em { font-weight: 400; color: var(--accent); }
 .pcard-btn.outline { background: transparent; color: var(--text); border-color: var(--card-border); }
 .pcard-btn.outline:hover { border-color: var(--accent); color: var(--accent); }
 .pcard-micro { font-size: 11px; color: var(--muted-3); text-align: center; line-height: 1.6; }
-@media (max-width: 768px) { .price-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) {
+  .price-grid { grid-template-columns: 1fr; }
+  .pcard + .pcard { border-left: none; border-top: 1px solid var(--card-border); }
+  .pcard-badge { left: 24px; }
+}
 
 /* ── METHOD DETAIL ── */
 .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
@@ -271,6 +275,13 @@ textarea { resize: vertical; min-height: 90px; }
 .consent input { accent-color: var(--accent); margin-top: 2px; width: 15px; height: 15px; flex: none; }
 .form-submit { display: block; width: 100%; text-align: center; }
 @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .form-block { padding: 30px 24px 36px; } }
+
+/* ── CONTACT GRID ── */
+.contact-grid { display: grid; grid-template-columns: .83fr 1fr; gap: 80px; align-items: start; }
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .contact-grid .btn { width: 100%; text-align: center; display: block; box-sizing: border-box; }
+}
 
 /* ── FOOTER ── */
 .footer { background: var(--block); border-top: 1px solid var(--line); padding: 36px 0 28px; }
@@ -574,7 +585,7 @@ textarea { resize: vertical; min-height: 90px; }
 
 <!-- ══ 9. КОНТАКТ / ФОРМА ══ -->
 <section class="section" id="contact">
-  <div class="wrap" style="display:grid;grid-template-columns:.83fr 1fr;gap:80px;align-items:start">
+  <div class="wrap contact-grid">
     <div>
       <div class="sec-index">Связь</div>
       <h2>Остались <em>вопросы?</em></h2>
