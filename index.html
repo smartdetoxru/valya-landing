@@ -174,6 +174,26 @@ h2 em { font-weight: 400; color: var(--accent); }
 .review-what { font-size: 12px; color: var(--muted-2); margin-top: 3px; }
 .review-disc { font-size: 11px; color: var(--faint); font-style: italic; margin-top: 10px; }
 
+/* ── REVIEWS WITH PHOTO ── */
+.review-big { background: var(--bg); border: 1px solid var(--card-border); display: grid; grid-template-columns: 200px 1fr; gap: 0; overflow: hidden; }
+.review-big + .review-big { border-top: none; }
+.review-big-photo { overflow: hidden; }
+.review-big-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.review-big-body { padding: 36px 36px 32px; position: relative; }
+.review-big-body::before {
+  content: "\201C"; font-family: var(--serif); font-size: 72px; line-height: 1;
+  color: var(--accent); opacity: .15; position: absolute; top: 16px; left: 26px;
+  pointer-events: none;
+}
+.review-big-body q { display: block; font-family: var(--serif); font-size: 15px; font-style: italic; line-height: 1.7; margin-bottom: 20px; quotes: none; padding-top: 8px; color: var(--text); }
+.review-big-name { font-size: 13px; font-weight: 700; }
+.review-big-role { font-size: 12px; color: var(--muted-2); margin-top: 3px; }
+@media (max-width: 600px) {
+  .review-big { grid-template-columns: 1fr; }
+  .review-big-photo { height: 240px; }
+  .review-big-body { padding: 28px 24px 26px; }
+}
+
 /* ── WHY NOT WORKED ── */
 .attempts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(248,247,242,.06); }
 .attempt { background: var(--dark-bg); padding: 40px 32px 44px; border-top: 1px solid rgba(201,214,191,.18); }
@@ -442,24 +462,36 @@ textarea { resize: vertical; min-height: 90px; }
       <h2>Что говорят <em>участницы</em></h2>
       <p class="sec-lead" style="margin-inline:auto">Факты — так, как рассказали сами</p>
     </div>
-    <div class="g3">
-      <div class="review">
-        <q>На второй неделе — ежедневный стул без слабительных. Через 2 месяца: минус 8 кг. Я не верила, что это возможно без таблеток.</q>
-        <div class="review-who">Наталья, 49 лет</div>
-        <div class="review-what">Запор годами → 2-я неделя: ежедневный стул</div>
-        <div class="review-disc">История из практики, с её слов</div>
+    <div style="max-width:860px;margin-inline:auto">
+      <div class="review-big">
+        <div class="review-big-photo">
+          <img src="assets/review-anastasia.jpg" alt="Анастасия Кокеева">
+        </div>
+        <div class="review-big-body">
+          <q>Мы проходили программу всей семьёй. У меня — никаких проблем с пищеварением, ушли отёки и синяки под глазами. У дочери наладилось давление, очистилась кожа, нормализовался вес. Мягкие, постепенные результаты — ставка на долгосрочность.</q>
+          <div class="review-big-name">Анастасия Кокеева</div>
+          <div class="review-big-role">Founder and Designer, MyKi Jewellery</div>
+        </div>
       </div>
-      <div class="review">
-        <q>Через месяц — ем что хочу. Без изжоги, без омепразола. А потом парикмахер спросил: откуда у вас такая густота волос?</q>
-        <div class="review-who">Елена, 60 лет</div>
-        <div class="review-what">Изжога + омепразол → месяц: ест без ограничений</div>
-        <div class="review-disc">История из практики, с её слов</div>
+      <div class="review-big">
+        <div class="review-big-photo">
+          <img src="assets/review-maria.jpg" alt="Мария Шпакова">
+        </div>
+        <div class="review-big-body">
+          <q>Всю жизнь — большие проблемы с пищеварением, десятки диет. Реально работающую систему питания я обрела благодаря Валентине. Теперь могу нормально есть, не набирать вес и даже потихоньку стройнеть. Спокойно готовлю на всю семью и хожу в рестораны.</q>
+          <div class="review-big-name">Мария Шпакова</div>
+          <div class="review-big-role">Калифорния, США</div>
+        </div>
       </div>
-      <div class="review">
-        <q>Жидкий стул каждый день, боялась выйти из дома. Через месяц на программе — стул нормализовался, лоперамид больше не нужен.</q>
-        <div class="review-who">Марина, 59 лет</div>
-        <div class="review-what">Жидкий стул постоянно → месяц: норма без таблеток</div>
-        <div class="review-disc">История из практики, с её слов</div>
+      <div class="review-big">
+        <div class="review-big-photo">
+          <img src="assets/review-anna.jpg" alt="Анна Егорова">
+        </div>
+        <div class="review-big-body">
+          <q>При 20 лишних кг я прибавляла ещё по 1 кг в неделю — даже на меню диетолога. После программы вес начал снижаться на 1 кг в неделю. Сейчас благополучно избавилась от 9 кг, и весь организм постепенно приходит в норму.</q>
+          <div class="review-big-name">Анна Егорова</div>
+          <div class="review-big-role">Специалист по работе с партнёрами в сфере IT</div>
+        </div>
       </div>
     </div>
   </div>
