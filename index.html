@@ -174,24 +174,31 @@ h2 em { font-weight: 400; color: var(--accent); }
 .review-what { font-size: 12px; color: var(--muted-2); margin-top: 3px; }
 .review-disc { font-size: 11px; color: var(--faint); font-style: italic; margin-top: 10px; }
 
-/* ── REVIEWS WITH PHOTO ── */
-.review-big { background: var(--bg); border: 1px solid var(--card-border); display: grid; grid-template-columns: 200px 1fr; gap: 0; overflow: hidden; }
-.review-big + .review-big { border-top: none; }
-.review-big-photo { overflow: hidden; }
-.review-big-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-.review-big-body { padding: 36px 36px 32px; position: relative; }
-.review-big-body::before {
-  content: "\201C"; font-family: var(--serif); font-size: 72px; line-height: 1;
-  color: var(--accent); opacity: .15; position: absolute; top: 16px; left: 26px;
+/* ── REVIEW SLIDER ── */
+.slider-wrap { position: relative; max-width: 860px; margin-inline: auto; }
+.slider-track { overflow: hidden; }
+.slider-inner { display: flex; transition: transform .4s ease; }
+.slide { min-width: 100%; display: grid; grid-template-columns: 220px 1fr; border: 1px solid var(--card-border); background: var(--bg); overflow: hidden; }
+.slide-photo { overflow: hidden; min-height: 320px; }
+.slide-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.slide-body { padding: 40px 40px 36px; position: relative; display: flex; flex-direction: column; justify-content: center; }
+.slide-body::before {
+  content: "\201C"; font-family: var(--serif); font-size: 80px; line-height: 1;
+  color: var(--accent); opacity: .13; position: absolute; top: 18px; left: 28px;
   pointer-events: none;
 }
-.review-big-body q { display: block; font-family: var(--serif); font-size: 15px; font-style: italic; line-height: 1.7; margin-bottom: 20px; quotes: none; padding-top: 8px; color: var(--text); }
-.review-big-name { font-size: 13px; font-weight: 700; }
-.review-big-role { font-size: 12px; color: var(--muted-2); margin-top: 3px; }
+.slide-body q { display: block; font-family: var(--serif); font-size: 16px; font-style: italic; line-height: 1.72; margin-bottom: 24px; quotes: none; padding-top: 12px; color: var(--text); }
+.slide-name { font-size: 13px; font-weight: 700; }
+.slide-role { font-size: 12px; color: var(--muted-2); margin-top: 4px; }
+.slider-nav { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 24px; }
+.slider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--card-border); border: none; padding: 0; cursor: pointer; transition: background .2s, transform .2s; }
+.slider-dot.active { background: var(--accent); transform: scale(1.25); }
+.slider-btn { background: var(--bg); border: 1px solid var(--card-border); width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; color: var(--accent); transition: border-color .2s; flex-shrink: 0; }
+.slider-btn:hover { border-color: var(--accent); }
 @media (max-width: 600px) {
-  .review-big { grid-template-columns: 1fr; }
-  .review-big-photo { height: 240px; }
-  .review-big-body { padding: 28px 24px 26px; }
+  .slide { grid-template-columns: 1fr; }
+  .slide-photo { min-height: 260px; }
+  .slide-body { padding: 28px 24px 26px; }
 }
 
 /* ── WHY NOT WORKED ── */
@@ -462,46 +469,59 @@ textarea { resize: vertical; min-height: 90px; }
       <h2>Что говорят <em>участницы</em></h2>
       <p class="sec-lead" style="margin-inline:auto">Факты — так, как рассказали сами</p>
     </div>
-    <div style="max-width:860px;margin-inline:auto">
-      <div class="review-big">
-        <div class="review-big-photo">
-          <img src="assets/review-anastasia.jpg" alt="Анастасия Кокеева">
-        </div>
-        <div class="review-big-body">
-          <q>Мы проходили программу всей семьёй. У меня — никаких проблем с пищеварением, ушли отёки и синяки под глазами. У дочери наладилось давление, очистилась кожа, нормализовался вес. Мягкие, постепенные результаты — ставка на долгосрочность.</q>
-          <div class="review-big-name">Анастасия Кокеева</div>
-          <div class="review-big-role">Founder and Designer, MyKi Jewellery</div>
+    <div class="slider-wrap">
+      <div class="slider-track">
+        <div class="slider-inner" id="reviewSlider">
+
+          <div class="slide">
+            <div class="slide-photo"><img src="assets/review-anastasia.jpg" alt="Анастасия Кокеева"></div>
+            <div class="slide-body">
+              <q>Мы проходили программу всей семьёй. У меня — никаких проблем с пищеварением, ушли отёки и синяки под глазами. У дочери наладилось давление, очистилась кожа, нормализовался вес. Мягкие, постепенные результаты — ставка на долгосрочность.</q>
+              <div class="slide-name">Анастасия Кокеева</div>
+              <div class="slide-role">Founder and Designer, MyKi Jewellery</div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-photo"><img src="assets/review-maria.jpg" alt="Мария Шпакова"></div>
+            <div class="slide-body">
+              <q>Всю жизнь — большие проблемы с пищеварением, десятки диет. Реально работающую систему питания я обрела благодаря Валентине. Теперь могу нормально есть, не набирать вес и даже потихоньку стройнеть. Спокойно готовлю на всю семью и хожу в рестораны.</q>
+              <div class="slide-name">Мария Шпакова</div>
+              <div class="slide-role">Калифорния, США</div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-photo"><img src="assets/review-anna.jpg" alt="Анна Егорова"></div>
+            <div class="slide-body">
+              <q>При 20 лишних кг я прибавляла ещё по 1 кг в неделю — даже на меню диетолога. После программы вес начал снижаться на 1 кг в неделю. Сейчас благополучно избавилась от 9 кг, и весь организм постепенно приходит в норму.</q>
+              <div class="slide-name">Анна Егорова</div>
+              <div class="slide-role">Специалист по работе с партнёрами в сфере IT</div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-photo"><img src="assets/review-yulia.jpg" alt="Юлия Матова"></div>
+            <div class="slide-body">
+              <q>«Умный детокс» расставил всё по местам. Изменила завтрак — чувствую больше энергии. Наладился стул. Список несовместимых продуктов — давно искала такой полный вариант. Рецепты простые, готовлю для всей семьи.</q>
+              <div class="slide-name">Юлия Матова</div>
+              <div class="slide-role">Преподаватель английского языка</div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="review-big">
-        <div class="review-big-photo">
-          <img src="assets/review-maria.jpg" alt="Мария Шпакова">
-        </div>
-        <div class="review-big-body">
-          <q>Всю жизнь — большие проблемы с пищеварением, десятки диет. Реально работающую систему питания я обрела благодаря Валентине. Теперь могу нормально есть, не набирать вес и даже потихоньку стройнеть. Спокойно готовлю на всю семью и хожу в рестораны.</q>
-          <div class="review-big-name">Мария Шпакова</div>
-          <div class="review-big-role">Калифорния, США</div>
-        </div>
-      </div>
-      <div class="review-big">
-        <div class="review-big-photo">
-          <img src="assets/review-anna.jpg" alt="Анна Егорова">
-        </div>
-        <div class="review-big-body">
-          <q>При 20 лишних кг я прибавляла ещё по 1 кг в неделю — даже на меню диетолога. После программы вес начал снижаться на 1 кг в неделю. Сейчас благополучно избавилась от 9 кг, и весь организм постепенно приходит в норму.</q>
-          <div class="review-big-name">Анна Егорова</div>
-          <div class="review-big-role">Специалист по работе с партнёрами в сфере IT</div>
-        </div>
-      </div>
-      <div class="review-big">
-        <div class="review-big-photo">
-          <img src="assets/review-yulia.jpg" alt="Юлия Матова">
-        </div>
-        <div class="review-big-body">
-          <q>«Умный детокс» расставил всё по местам. Изменила завтрак — чувствую больше энергии. Наладился стул. Список несовместимых продуктов — давно искала такой полный вариант. Рецепты простые, готовлю для всей семьи.</q>
-          <div class="review-big-name">Юлия Матова</div>
-          <div class="review-big-role">Преподаватель английского языка</div>
-        </div>
+      <div class="slider-nav">
+        <button class="slider-btn" id="reviewPrev" aria-label="Предыдущий">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-dot active" data-idx="0" aria-label="Отзыв 1"></button>
+        <button class="slider-dot" data-idx="1" aria-label="Отзыв 2"></button>
+        <button class="slider-dot" data-idx="2" aria-label="Отзыв 3"></button>
+        <button class="slider-dot" data-idx="3" aria-label="Отзыв 4"></button>
+        <button class="slider-btn" id="reviewNext" aria-label="Следующий">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -677,6 +697,34 @@ textarea { resize: vertical; min-height: 90px; }
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var slider = document.getElementById('reviewSlider');
+  if (!slider) return;
+  var dots = document.querySelectorAll('.slider-dot[data-idx]');
+  var total = dots.length;
+  var current = 0;
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    slider.style.transform = 'translateX(-' + current * 100 + '%)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+  }
+
+  document.getElementById('reviewPrev').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('reviewNext').addEventListener('click', function(){ goTo(current + 1); });
+  dots.forEach(function(d){ d.addEventListener('click', function(){ goTo(+d.dataset.idx); }); });
+
+  // Свайп на мобиле
+  var startX = 0;
+  slider.parentElement.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  slider.parentElement.addEventListener('touchend', function(e){
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  }, {passive:true});
+})();
+</script>
 
 </body>
 </html>
