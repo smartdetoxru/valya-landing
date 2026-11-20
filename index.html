@@ -728,39 +728,5 @@ textarea { resize: vertical; min-height: 90px; }
 })();
 </script>
 
-<script>
-(function () {
-  var track = document.getElementById('revTrack');
-  var dots  = document.querySelectorAll('.slider-dot[data-p]');
-  var cur   = 0;
-
-  function perPage() {
-    if (window.innerWidth <= 768) return 1;
-    return 2;
-  }
-  function pages() { return Math.ceil(track.children.length / perPage()); }
-
-  function goTo(p) {
-    var pp = perPage();
-    cur = ((p % pages()) + pages()) % pages();
-    var cardW = track.children[0].getBoundingClientRect().width + 16;
-    track.style.transform = 'translateX(-' + (cur * pp * cardW) + 'px)';
-    dots.forEach(function(d, i){ d.classList.toggle('active', i === cur); });
-  }
-
-  document.getElementById('revPrev').addEventListener('click', function(){ goTo(cur - 1); });
-  document.getElementById('revNext').addEventListener('click', function(){ goTo(cur + 1); });
-  dots.forEach(function(d){ d.addEventListener('click', function(){ goTo(+d.dataset.p); }); });
-
-  var sx = 0;
-  track.parentElement.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; },{passive:true});
-  track.parentElement.addEventListener('touchend', function(e){
-    var diff = sx - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) goTo(diff > 0 ? cur+1 : cur-1);
-  },{passive:true});
-
-  window.addEventListener('resize', function(){ goTo(0); });
-})();
-</script>
 </body>
 </html>
