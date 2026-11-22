@@ -704,6 +704,9 @@ textarea { resize: vertical; min-height: 90px; }
   var total = dots.length;
   var current = 0;
 
+  var trackWidth = slider.parentElement.offsetWidth;
+  document.querySelectorAll('.slide').forEach(function(s){ s.style.width = trackWidth + 'px'; s.style.minWidth = trackWidth + 'px'; });
+
   function goTo(idx) {
     current = (idx + total) % total;
     var slideWidth = slider.parentElement.offsetWidth;
